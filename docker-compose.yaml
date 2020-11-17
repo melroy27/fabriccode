@@ -5,7 +5,7 @@ networks:
 
 services:
   orderer0-service:
-    image: hyperledger/fabric-orderer:1.4.3
+    image: hyperledger/fabric-orderer:1.4.2
     container_name: orderer0-service
     working_dir: /var/hyperledger/orderer
     restart: always
@@ -37,7 +37,7 @@ services:
     networks:
       - default.svc.cluster.local
   orderer1-service:
-    image: hyperledger/fabric-orderer:1.4.3
+    image: hyperledger/fabric-orderer:1.4.2
     container_name: orderer1-service
     working_dir: /var/hyperledger/orderer
     restart: always
@@ -69,7 +69,7 @@ services:
     networks:
       - default.svc.cluster.local
   orderer2-service:
-    image: hyperledger/fabric-orderer:1.4.3
+    image: hyperledger/fabric-orderer:1.4.2
     container_name: orderer2-service
     working_dir: /var/hyperledger/orderer
     restart: always
@@ -115,7 +115,7 @@ services:
     networks:
       - default.svc.cluster.local
   peer0-org1-service:
-    image: hyperledger/fabric-peer:1.4.3
+    image: hyperledger/fabric-peer:1.4.2
     container_name: peer0-org1-service
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     restart: always
@@ -172,7 +172,7 @@ services:
     networks:
       - default.svc.cluster.local
   peer1-org1-service:
-    image: hyperledger/fabric-peer:1.4.3
+    image: hyperledger/fabric-peer:1.4.2
     container_name: peer1-org1-service
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     restart: always
@@ -229,7 +229,7 @@ services:
     networks:
       - default.svc.cluster.local
   peer0-org2-service:
-    image: hyperledger/fabric-peer:1.4.3
+    image: hyperledger/fabric-peer:1.4.2
     container_name: peer0-org2-service
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     restart: always
@@ -286,7 +286,7 @@ services:
     networks:
       - default.svc.cluster.local
   peer1-org2-service:
-    image: hyperledger/fabric-peer:1.4.3
+    image: hyperledger/fabric-peer:1.4.2
     container_name: peer1-org2-service
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     restart: always
@@ -331,7 +331,7 @@ services:
 
   cli-peer0-org1:
     container_name: cli-peer0-org1
-    image: hyperledger/fabric-tools:1.4.3
+    image: hyperledger/fabric-tools:1.4.2
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -362,7 +362,7 @@ services:
 
   cli-peer1-org1:
     container_name: cli-peer1-org1
-    image: hyperledger/fabric-tools:1.4.3
+    image: hyperledger/fabric-tools:1.4.2
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -393,7 +393,7 @@ services:
 
   cli-peer0-org2:
     container_name: cli-peer0-org2
-    image: hyperledger/fabric-tools:1.4.3
+    image: hyperledger/fabric-tools:1.4.2
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -424,7 +424,7 @@ services:
 
   cli-peer1-org2:
     container_name: cli-peer1-org2
-    image: hyperledger/fabric-tools:1.4.3
+    image: hyperledger/fabric-tools:1.4.2
     restart: always
     environment:
       - GOPATH=/opt/gopath
