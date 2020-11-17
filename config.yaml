@@ -57,6 +57,8 @@ organizations:
     cryptopath: peerOrganizations/org1/users/Admin@org1/msp
     peers:
       - peer0-org1-service
+      - peer1-org1-service
+
 
 orderers:
   _default:
