@@ -81,7 +81,7 @@ for ((j = 1; j < 2; j++)); do # made a change here
     export FABRIC_CA_CLIENT_HOME=$HOME_DIR/$ORG.$DOMAIN/user
     bash $SCRIPTDIR/helpers/enroll-entity.sh $PEER_ID $PEER_PW $ENROLLURL $ORG
 
-    for ((i = 0; i < 2; i++)); do # made a change here
+    for ((i = 0; i < 1; i++)); do # made a change here
 
         peer=peer$i
 
@@ -133,7 +133,7 @@ for ((j = 1; j < 2; j++)); do # made a change here
     cp -rf $HOME_DIR/$ORG.$DOMAIN/admin/* $CONFIGPATH/peerOrganizations/$ORG.$DOMAIN/users/Admin@$ORG.$DOMAIN
     cp -rf $HOME_DIR/$ORG.$DOMAIN/msp/* $CONFIGPATH/peerOrganizations/$ORG.$DOMAIN/msp
 
-    for ((i = 0; i < 2; i++)); do  # made a change here
+    for ((i = 0; i < 1; i++)); do  # made a change here
 
         NAME=peer$i
 

@@ -57,7 +57,6 @@ organizations:
     cryptopath: peerOrganizations/org1/users/Admin@org1/msp
     peers:
       - peer0-org1-service
-      - peer1-org1-service
 
 
 orderers:
@@ -110,15 +109,7 @@ peers:
       grpc.http2.keepalive_time: 15
     
     tlsCACerts:
-      path: /crypto-config/peerOrganizations/org1.default.svc.cluster.local/msp/tlscacerts/ca-root-7054.pem
-
-  peer1-org1-service:
-    grpcOptions:
-      ssl-target-name-override: peer1-org1-service
-      grpc.http2.keepalive_time: 15
-    
-    tlsCACerts:
-      path: /crypto-config/peerOrganizations/org1.default.svc.cluster.local/msp/tlscacerts/ca-root-7054.pem
+      path: /crypto-config/peerOrganizations/org1/msp/tlscacerts/ca-root-7054.pem
 
 entityMatchers:
 
@@ -127,11 +118,6 @@ entityMatchers:
       urlSubstitutionExp: peer0-org1-service:7051
       sslTargetOverrideUrlSubstitutionExp: peer0-org1-service
       mappedHost: peer0-org1-service
-
-    - pattern: (\w*)peer1-org1-service(\w*)
-      urlSubstitutionExp: peer1-org1-service:7051
-      sslTargetOverrideUrlSubstitutionExp: peer1-org1-service
-      mappedHost: peer1-org1-service
 
 
   orderer:
