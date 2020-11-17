@@ -1,4 +1,4 @@
-version: "3"
+version: "2"
 
 networks:
   default.svc.cluster.local:
@@ -21,7 +21,6 @@ services:
       - 7054:7054
     networks:
       - default.svc.cluster.local
-
   ca-intermediate:
     container_name: ca-intermediate
     image: hyperledger/fabric-ca:1.4.2
@@ -46,7 +45,6 @@ services:
       - default.svc.cluster.local
     depends_on:
       - ca-root
-      
   ca-client:
     container_name: ca-client
     image: hyperledger/fabric-ca-tools:1.2.1

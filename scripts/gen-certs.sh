@@ -36,7 +36,6 @@ bash $SCRIPTDIR/helpers/copy-admin-cert.sh "$HOME_DIR/$DOMAIN/admin/msp" "$HOME_
 ORDERER_DNS_LIST="orderer0-service,orderer1-service,orderer2-service"
 
 for ((i = 0; i < 3; i++)); do
-
     NAME=orderer$i
     export FABRIC_CA_CLIENT_HOME=$HOME_DIR/$DOMAIN/$NAME
     bash $SCRIPTDIR/helpers/enroll-tls.sh $ORDERER_ID $ORDERER_PW $ENROLLURL "$HOME_DIR/$DOMAIN/$NAME/tls" $ORDERER_DNS_LIST
@@ -50,11 +49,11 @@ for ((i = 0; i < 3; i++)); do
     bash $SCRIPTDIR/helpers/copy-admin-cert.sh "$HOME_DIR/$DOMAIN/admin/msp" "$HOME_DIR/$DOMAIN/$NAME/msp"
 done
 
-for ((j = 1; j < 2; j++)); do # made a change here
+for ((j = 1; j < 3; j++)); do
 
     export FABRIC_CA_CLIENT_HOME=$HOME_DIR/caAdmin
     ORG=org$j
-    PEER_DNS_LIST="peer0-$ORG-service"
+    PEER_DNS_LIST="peer0-$ORG-service,peer1-$ORG-service"
 
     bash $SCRIPTDIR/helpers/register-entity.sh "peer0.$ORG.$DOMAIN" "peer0.$ORG.${DOMAIN}pw" peer $ORG
     bash $SCRIPTDIR/helpers/register-entity.sh "peer1.$ORG.$DOMAIN" "peer1.$ORG.${DOMAIN}pw" peer $ORG
@@ -81,7 +80,7 @@ for ((j = 1; j < 2; j++)); do # made a change here
     export FABRIC_CA_CLIENT_HOME=$HOME_DIR/$ORG.$DOMAIN/user
     bash $SCRIPTDIR/helpers/enroll-entity.sh $PEER_ID $PEER_PW $ENROLLURL $ORG
 
-    for ((i = 0; i < 1; i++)); do # made a change here now
+    for ((i = 0; i < 2; i++)); do
 
         peer=peer$i
 
@@ -123,7 +122,7 @@ for ((i = 0; i < 3; i++)); do
 
 done
 
-for ((j = 1; j < 2; j++)); do # made a change here
+for ((j = 1; j < 3; j++)); do
 
     ORG=org$j
 
@@ -133,7 +132,7 @@ for ((j = 1; j < 2; j++)); do # made a change here
     cp -rf $HOME_DIR/$ORG.$DOMAIN/admin/* $CONFIGPATH/peerOrganizations/$ORG.$DOMAIN/users/Admin@$ORG.$DOMAIN
     cp -rf $HOME_DIR/$ORG.$DOMAIN/msp/* $CONFIGPATH/peerOrganizations/$ORG.$DOMAIN/msp
 
-    for ((i = 0; i < 1; i++)); do  # made a change here
+    for ((i = 0; i < 2; i++)); do
 
         NAME=peer$i
 
