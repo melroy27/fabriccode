@@ -144,8 +144,8 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=1234
     volumes:
       - /var/run/:/host/var/run
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local/peers/peer0-org1.default.svc.cluster.local/msp:/etc/hyperledger/fabric/msp
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local/peers/peer0-org1.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer0.default.svc.cluster.local/msp:/etc/hyperledger/fabric/msp
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer0.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
       - ./state/peer0-org1:/var/hyperledger/production
       - ./crypto-config/ordererOrganizations/default.svc.cluster.local:/etc/hyperledger/orderers
       - ./scripts/:/scripts/
@@ -201,8 +201,8 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=1234
     volumes:
       - /var/run/:/host/var/run
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local/peers/peer1-org1.default.svc.cluster.local/msp:/etc/hyperledger/fabric/msp
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local/peers/peer1-org1.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer1.default.svc.cluster.local/msp:/etc/hyperledger/fabric/msp
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer1.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
       - ./state/peer1-org1:/var/hyperledger/production
       - ./crypto-config/ordererOrganizations/default.svc.cluster.local:/etc/hyperledger/orderers
       - ./scripts/:/scripts/
@@ -217,7 +217,7 @@ services:
 
   cli-peer0-org1:
     container_name: cli-peer0-org1
-    image: hyperledger/fabric-tools:1.4.2
+    image: hyperledger/fabric-tools:1.4.3
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -226,7 +226,7 @@ services:
       - CORE_PEER_ID=cli-peer0-org1
       - CORE_PEER_ADDRESS=peer0-org1-service:7051
       - CORE_PEER_LOCALMSPID=org1
-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1.default.svc.cluster.local/msp
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1/msp
 
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
@@ -237,8 +237,8 @@ services:
       - ./orderer/:/opt/gopath/src/github.com/hyperledger/fabric/peer/orderer
       - ./chaincode/rawresources:/opt/gopath/src/rawresources
       - ./channels/:/opt/gopath/src/github.com/hyperledger/fabric/peer/channels
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local:/etc/hyperledger/fabric/msp
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local/peers/peer0-org1.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
+      - ./crypto-config/peerOrganizations/org1:/etc/hyperledger/fabric/msp
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer0.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
       - ./crypto-config/ordererOrganizations/default.svc.cluster.local:/etc/hyperledger/orderers
     depends_on:
       - peer0-org1-service
@@ -248,7 +248,7 @@ services:
 
   cli-peer1-org1:
     container_name: cli-peer1-org1
-    image: hyperledger/fabric-tools:1.4.2
+    image: hyperledger/fabric-tools:1.4.3
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -257,7 +257,7 @@ services:
       - CORE_PEER_ID=cli-peer1-org1
       - CORE_PEER_ADDRESS=peer1-org1-service:8051
       - CORE_PEER_LOCALMSPID=org1
-      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1.default.svc.cluster.local/msp
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1/msp
 
       - CORE_PEER_TLS_ENABLED=true
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
@@ -268,11 +268,12 @@ services:
       - ./orderer/:/opt/gopath/src/github.com/hyperledger/fabric/peer/orderer
       - ./chaincode/rawresources:/opt/gopath/src/rawresources
       - ./channels/:/opt/gopath/src/github.com/hyperledger/fabric/peer/channels
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local:/etc/hyperledger/fabric/msp
-      - ./crypto-config/peerOrganizations/org1.default.svc.cluster.local/peers/peer1-org1.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
+      - ./crypto-config/peerOrganizations/org1:/etc/hyperledger/fabric/msp
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer1.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
       - ./crypto-config/ordererOrganizations/default.svc.cluster.local:/etc/hyperledger/orderers
     depends_on:
       - peer0-org1-service
     command: sleep infinity
     networks:
       - default.svc.cluster.local
+
