@@ -49,7 +49,7 @@ for ((i = 0; i < 3; i++)); do
     bash $SCRIPTDIR/helpers/copy-admin-cert.sh "$HOME_DIR/$DOMAIN/admin/msp" "$HOME_DIR/$DOMAIN/$NAME/msp"
 done
 
-for ((j = 1; j < 3; j++)); do
+for ((j = 1; j < 2; j++)); do
 
     export FABRIC_CA_CLIENT_HOME=$HOME_DIR/caAdmin
     ORG=org$j
@@ -122,7 +122,7 @@ for ((i = 0; i < 3; i++)); do
 
 done
 
-for ((j = 1; j < 3; j++)); do
+for ((j = 1; j < 2; j++)); do
 
     ORG=org$j
 
