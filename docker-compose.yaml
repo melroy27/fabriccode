@@ -217,7 +217,7 @@ services:
 
   cli-peer0-org1:
     container_name: cli-peer0-org1
-    image: hyperledger/fabric-tools:1.4.3
+    image: hyperledger/fabric-tools:1.4.2
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -248,7 +248,7 @@ services:
 
   cli-peer1-org1:
     container_name: cli-peer1-org1
-    image: hyperledger/fabric-tools:1.4.3
+    image: hyperledger/fabric-tools:1.4.2
     restart: always
     environment:
       - GOPATH=/opt/gopath
@@ -276,4 +276,3 @@ services:
     command: sleep infinity
     networks:
       - default.svc.cluster.local
-

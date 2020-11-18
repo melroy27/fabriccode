@@ -2,7 +2,7 @@ Organizations:
     - &orderer
         Name: orderer
         ID: orderer
-        MSPDir: crypto-config/ordererOrganizations/orderer/msp
+        MSPDir: crypto-config/ordererOrganizations/default.svc.cluster.local/msp
         Policies:
             Readers:
                 Type: Signature
@@ -18,7 +18,7 @@ Organizations:
         ID: org1
         MSPDir: crypto-config/peerOrganizations/org1/msp
         AnchorPeers:
-            - Host: peer0-org1
+            - Host: peer0-org1-service
               Port: 7051
         Policies:
             Readers:
@@ -67,22 +67,22 @@ Orderer: &OrdererDefaults
     OrdererType: etcdraft
     EtcdRaft:
         Consenters:
-            - Host: orderer0
+            - Host: orderer0-service
               Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer/orderers/orderer0/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer/orderers/orderer0/tls/server.crt
-            - Host: orderer1
+              ClientTLSCert: crypto-config/ordererOrganizations/default.svc.cluster.local/orderers/orderer0.default.svc.cluster.local/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/default.svc.cluster.local/orderers/orderer0.default.svc.cluster.local/tls/server.crt
+            - Host: orderer1-service
               Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer/orderers/orderer1/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer/orderers/orderer1/tls/server.crt
-            - Host: orderer2
+              ClientTLSCert: crypto-config/ordererOrganizations/default.svc.cluster.local/orderers/orderer1.default.svc.cluster.local/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/default.svc.cluster.local/orderers/orderer1.default.svc.cluster.local/tls/server.crt
+            - Host: orderer2-service
               Port: 7050
-              ClientTLSCert: crypto-config/ordererOrganizations/orderer/orderers/orderer2/tls/server.crt
-              ServerTLSCert: crypto-config/ordererOrganizations/orderer/orderers/orderer2/tls/server.crt
+              ClientTLSCert: crypto-config/ordererOrganizations/default.svc.cluster.local/orderers/orderer2.default.svc.cluster.local/tls/server.crt
+              ServerTLSCert: crypto-config/ordererOrganizations/default.svc.cluster.local/orderers/orderer2.default.svc.cluster.local/tls/server.crt
     Addresses:
-        - orderer0:7050
-        - orderer1:7050
-        - orderer2:7050
+        - orderer0-service:7050
+        - orderer1-service:7050
+        - orderer2-service:7050
     BatchTimeout: 2s
     BatchSize:
         MaxMessageCount: 10
@@ -136,6 +136,7 @@ Profiles:
             MAIN:
                 Organizations:
                     - *org1
+
     
     MainChannel:
         Consortium: MAIN
@@ -144,5 +145,6 @@ Profiles:
             <<: *ApplicationDefaults
             Organizations:
                 - *org1
+
             Capabilities:
                 <<: *ApplicationCapabilities
