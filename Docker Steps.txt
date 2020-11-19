@@ -1,0 +1,69 @@
+Steps:
+
+Bring the ca docker-compose file up
+
+bash into the ca-client
+
+generate the crypto material
+
+/************ Copy the Crypto Material ************/
+
+copy the crypto material into the main directory(inside this folder)
+
+docker cp ca-client:/etc/hyperledger/fabric-ca-server/crypto-config ./crypto-config
+
+/********** Create Folders ***********/
+
+mkdir orderer
+mkdir channels
+
+/**********generating genisis block**********/
+../bin/nicks/configtxgen -profile OrdererGenesis -channelID syschannel -outputBlock ./orderer/genesis.block
+
+/*********generating channel artifacts **********/
+
+../bin/nicks/configtxgen -profile MainChannel -outputCreateChannelTx ./channels/mainchannel.tx -channelID mainchannel
+
+configtxgen -profile MainChannel -outputAnchorPeersUpdate ./channels/org1-anchors.tx -channelID mainchannel -asOrg org1
+
+/**********Running the orderer compose file***/
+docker-compose up
+
+/******Create Channel********/
+docker exec cli-peer0-org1 bash -c 'peer channel create -c mainchannel -f ./channels/mainchannel.tx -o orderer0-service:7050 --tls --cafile=/etc/hyperledger/orderers/msp/tlscacerts/ca-root-7054.pem'
+
+/******Join Channel********/
+docker exec cli-peer0-org1 bash -c 'peer channel join -b mainchannel.block'
+
+docker exec cli-peer0-org1 bash -c 'cp mainchannel.block ./channels/mainchannel.block'
+docker exec cli-peer1-org1 bash -c 'peer channel join -b ./channels/mainchannel.block'
+
+docker exec cli-peer0-org2 bash -c 'peer channel join -b ./channels/mainchannel.block'
+docker exec cli-peer1-org2 bash -c 'peer channel join -b ./channels/mainchannel.block'
+
+/********Peer Channel Update*******/
+
+docker exec cli-peer0-org1 bash -c 'peer channel update -o orderer0-service:7050 --tls --cafile=/etc/hyperledger/orderers/msp/tlscacerts/ca-root-7054.pem -c mainchannel -f ./channels/org1-anchors.tx'
+
+	
+sleep 15
+
+/****** Install Chain Code**********/
+
+docker exec cli-peer0-org1 bash -c 'peer chaincode install -p rawresources -n rawresources -v 0'
+docker exec cli-peer1-org1 bash -c 'peer chaincode install -p rawresources -n rawresources -v 0'
+docker exec cli-peer0-org2 bash -c 'peer chaincode install -p rawresources -n rawresources -v 0'
+docker exec cli-peer1-org2 bash -c 'peer chaincode install -p rawresources -n rawresources -v 0'
+
+/**** Instantiate the Chaincode
+docker exec cli-peer0-org1 bash -c "peer chaincode instantiate -C mainchannel -n rawresources -v 0 -c '{\"Args\":[]}' -o orderer0-service:7050 --tls --cafile=/etc/hyperledger/orderers/msp/tlscacerts/ca-root-7054.pem"
+
+/**** Adding Some data***/
+docker exec -it cli-peer0-org1 bash
+
+peer chaincode invoke -C mainchannel -n rawresources -c '{"Args":["store", "{\"id\":1,\"name\":\"Iron Ore\",\"weight\":4200}"]}' -o orderer0-service:7050 --tls --cafile=/etc/hyperledger/orderers/msp/tlscacerts/ca-root-7054.pem
+
+/**** Querying the Chaincode*****/
+docker exec cli-peer0-org1 bash -c "peer chaincode query -C mainchannel -n rawresources -c '{\"Args\":[\"index\",\"0\",\"150\"]}' -o orderer0-service:7050 --tls --cafile=/etc/hyperledger/orderers/msp/tlscacerts/ca-root-7054.pem"
+
+
