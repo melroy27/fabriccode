@@ -6,5 +6,5 @@ This Fabric Network is built using version 1.4.2 having 3 Orderers(etcdraft) and
 
 ##############################################
 
-The Files on this branch is for running on a docker container
+The Files on this branch is for running on a Kubernetes Cluster
 
