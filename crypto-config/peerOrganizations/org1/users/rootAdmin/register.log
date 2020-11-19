@@ -1,2 +1,2 @@
-2020/11/18 12:11:34 [INFO] Configuration file location: /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/users/rootAdmin/fabric-ca-client-config.yaml
+2020/11/19 06:51:25 [INFO] Configuration file location: /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/users/rootAdmin/fabric-ca-client-config.yaml
 Password: secret
