@@ -1,2 +1,2 @@
-2020/11/19 06:51:24 [INFO] Configuration file location: /etc/hyperledger/fabric-ca-client/scripts/crypto-config/ordererOrganizations/default.svc.cluster.local/fabric-ca-client-config.yaml
-2020/11/19 06:51:24 [INFO] Stored root CA certificate at /etc/hyperledger/fabric-ca-client/scripts/crypto-config/ordererOrganizations/default.svc.cluster.local/msp/cacerts/ca-root-7054.pem
+2020/11/19 11:23:13 [INFO] Configuration file location: /etc/hyperledger/fabric-ca-client/scripts/crypto-config/ordererOrganizations/default.svc.cluster.local/fabric-ca-client-config.yaml
+2020/11/19 11:23:13 [INFO] Stored root CA certificate at /etc/hyperledger/fabric-ca-client/scripts/crypto-config/ordererOrganizations/default.svc.cluster.local/msp/cacerts/ca-root-7054.pem
