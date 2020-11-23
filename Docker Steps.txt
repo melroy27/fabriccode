@@ -1,6 +1,6 @@
 Steps:
 
-Bring the ca docker-compose file up
+Bring the ca docker-compose file up 
 
 bash into the ca-client
 
