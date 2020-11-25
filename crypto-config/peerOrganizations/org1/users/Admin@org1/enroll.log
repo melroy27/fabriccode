@@ -1,0 +1,5 @@
+2020/11/25 17:06:59 [INFO] Created a default configuration file at /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/users/Admin@org1/fabric-ca-client-config.yaml
+2020/11/25 17:06:59 [INFO] generating key: &{A:ecdsa S:256}
+2020/11/25 17:06:59 [INFO] encoded CSR
+2020/11/25 17:06:59 [INFO] Stored client certificate at /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/users/Admin@org1/msp/signcerts/cert.pem
+2020/11/25 17:06:59 [INFO] Stored root CA certificate at /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/users/Admin@org1/msp/cacerts/ca-root-7054.pem
