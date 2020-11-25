@@ -239,7 +239,7 @@ services:
       - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
       - CORE_PEER_ADDRESSAUTODETECT=true
       - CORE_VM_DOCKER_ATTACHOUT=true
-      - CORE_PEER_ID=peer1-org1-service
+      - CORE_PEER_ID=peer2-org1-service
       - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
       - CORE_PEER_GOSSIP_BOOTSTRAP=peer1-org1-service:8051
       - CORE_PEER_GOSSIP_EXTERNALENDPOINT=10.28.1.6:9051  #peer2-org1-service:9051
