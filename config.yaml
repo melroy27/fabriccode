@@ -146,7 +146,7 @@ entityMatchers:
     - pattern: (\w*)peer2-org1-service(\w*)
       urlSubstitutionExp: peer2-org1-service:7051
       sslTargetOverrideUrlSubstitutionExp: peer2-org1-service
-      mappedHost: peer1-org1-service
+      mappedHost: peer2-org1-service
 
   orderer:
     - pattern: (\w*)orderer0-service(\w*)
