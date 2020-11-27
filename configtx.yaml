@@ -145,6 +145,5 @@ Profiles:
             <<: *ApplicationDefaults
             Organizations:
                 - *org1
-
             Capabilities:
                 <<: *ApplicationCapabilities
