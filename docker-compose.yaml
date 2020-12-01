@@ -271,7 +271,8 @@ services:
   #     - orderer2-service
   #   networks:
   #     - default.svc.cluster.local
-      
+
+      # core_peer_localmspid, core_peer_mspconfigpath, core_peer_address
       
   cli-peer0-org1:
     container_name: cli-peer0-org1
@@ -335,33 +336,33 @@ services:
     networks:
       - default.svc.cluster.local
 
-  # cli-peer2-org1:
-  #   container_name: cli-peer2-org1
-  #   image: hyperledger/fabric-tools:1.4.2
-  #   restart: always
-  #   environment:
-  #     - GOPATH=/opt/gopath
-  #     - CORE_PEER_ADDRESSAUTODETECT=true
+  cli-peer2-org1:
+    container_name: cli-peer2-org1
+    image: hyperledger/fabric-tools:1.4.2
+    restart: always
+    environment:
+      - GOPATH=/opt/gopath
+      - CORE_PEER_ADDRESSAUTODETECT=true
 
-  #     - CORE_PEER_ID=cli-peer2-org1
-  #     - CORE_PEER_ADDRESS=peer2-org1-service:9051
-  #     - CORE_PEER_LOCALMSPID=org1
-  #     - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1/msp
+      - CORE_PEER_ID=cli-peer2-org1
+      - CORE_PEER_ADDRESS=peer2-org1-service:9051
+      - CORE_PEER_LOCALMSPID=org1
+      - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1/msp
 
-  #     - CORE_PEER_TLS_ENABLED=true
-  #     - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
-  #     - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
-  #     - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
-  #   working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
-  #   volumes:
-  #     - ./orderer/:/opt/gopath/src/github.com/hyperledger/fabric/peer/orderer
-  #     - ./chaincode/rawresources:/opt/gopath/src/rawresources
-  #     - ./channels/:/opt/gopath/src/github.com/hyperledger/fabric/peer/channels
-  #     - ./crypto-config/peerOrganizations/org1:/etc/hyperledger/fabric/msp
-  #     - ./crypto-config/peerOrganizations/org1/peers/org1-peer2.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
-  #     - ./crypto-config/ordererOrganizations/default.svc.cluster.local:/etc/hyperledger/orderers
-  #   depends_on:
-  #     - peer1-org1-service
-  #   command: sleep infinity
-  #   networks:
-  #     - default.svc.cluster.local
+      - CORE_PEER_TLS_ENABLED=true
+      - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
+      - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
+      - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
+    working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+    volumes:
+      - ./orderer/:/opt/gopath/src/github.com/hyperledger/fabric/peer/orderer
+      - ./chaincode/rawresources:/opt/gopath/src/rawresources
+      - ./channels/:/opt/gopath/src/github.com/hyperledger/fabric/peer/channels
+      - ./crypto-config/peerOrganizations/org1:/etc/hyperledger/fabric/msp
+      - ./crypto-config/peerOrganizations/org1/peers/org1-peer2.default.svc.cluster.local/tls:/etc/hyperledger/fabric/tls
+      - ./crypto-config/ordererOrganizations/default.svc.cluster.local:/etc/hyperledger/orderers
+    depends_on:
+      - peer1-org1-service
+    command: sleep infinity
+    networks:
+      - default.svc.cluster.local
