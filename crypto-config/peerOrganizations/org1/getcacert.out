@@ -1,0 +1,2 @@
+2020/12/04 11:02:47 [INFO] Configuration file location: /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/fabric-ca-client-config.yaml
+2020/12/04 11:02:47 [INFO] Stored root CA certificate at /etc/hyperledger/fabric-ca-client/scripts/crypto-config/peerOrganizations/org1/msp/cacerts/ca-root-7054.pem
