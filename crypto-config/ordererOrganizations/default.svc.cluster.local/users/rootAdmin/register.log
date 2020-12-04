@@ -1,2 +1,0 @@
-2020/11/27 06:50:41 [INFO] Configuration file location: /etc/hyperledger/fabric-ca-client/scripts/crypto-config/ordererOrganizations/default.svc.cluster.local/users/rootAdmin/fabric-ca-client-config.yaml
-Password: secret
