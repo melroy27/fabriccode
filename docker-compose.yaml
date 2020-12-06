@@ -345,7 +345,7 @@ services:
       - CORE_PEER_ADDRESSAUTODETECT=true
 
       - CORE_PEER_ID=cli-peer2-org1
-      - CORE_PEER_ADDRESS=35.239.74.180
+      - CORE_PEER_ADDRESS=35.226.198.46
       - CORE_PEER_LOCALMSPID=org1
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp/users/Admin@org1/msp
 
